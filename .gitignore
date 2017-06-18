@@ -2,11 +2,17 @@
 
 *.exe
 src/litecoin
+src/florincoin
 src/litecoind
+src/florincoin
 src/litecoin-cli
+src/florincoin-cli
 src/litecoin-tx
-src/test/test_litecoin
+src/florincoin-tx
+src/test/test_florincoin
+src/qt/test/test_florincoin-qt
 src/qt/test/test_litecoin-qt
+src/test/test_litecoin
 
 # autoreconf
 Makefile.in
@@ -56,6 +62,7 @@ src/qt/test/moc*.cpp
 *.o-*
 *.patch
 .litecoin
+.florincoin
 *.a
 *.pb.cc
 *.pb.h
@@ -75,11 +82,14 @@ src/qt/test/moc*.cpp
 *.qm
 Makefile
 litecoin-qt
+florincoin-qt
 Litecoin-Qt.app
+Florincoin-Qt.app
 
 # Unit-tests
 Makefile.test
 litecoin-qt_test
+florincoin-qt_test
 src/test/buildenv.py
 
 # Resources cpp

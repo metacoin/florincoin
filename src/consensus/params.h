@@ -62,6 +62,32 @@ struct Params {
     int64_t nPowTargetTimespan;
     int64_t DifficultyAdjustmentInterval() const { return nPowTargetTimespan / nPowTargetSpacing; }
     uint256 nMinimumChainWork;
+
+    // ToDo: bitspill, metacoin. hacked in.
+    unsigned int nPowTargetTimespan_Version1;
+    unsigned int nInterval_Version1;
+    unsigned int nHeight_Version2;
+    unsigned int nInterval_Version2;
+    unsigned int nPowTargetTimespan_Version2;
+    unsigned int nHeight_Version3;
+    unsigned int nInterval_Version3;
+    unsigned int nPowTargetTimespan_Version3;
+    unsigned int nMaxAdjustDown_Version1;
+    unsigned int nMaxAdjustUp_Version1;
+    unsigned int nMaxAdjustDown_Version2;
+    unsigned int nMaxAdjustUp_Version2;
+    unsigned int nMaxAdjustDown_Version3;
+    unsigned int nMaxAdjustUp_Version3;
+    unsigned int nPowTargetTimespanAdjDown_Version1;
+    unsigned int nPowTargetTimespanAdjDown_Version2;
+    unsigned int nPowTargetTimespanAdjDown_Version3;
+    unsigned int nAveragingInterval_Version1;
+    unsigned int nAveragingInterval_Version2;
+    unsigned int nAveragingInterval_Version3;
+    unsigned int nAveragingTargetTimespan_Version1;
+    unsigned int nAveragingTargetTimespan_Version2;
+    unsigned int nAveragingTargetTimespan_Version3;
+
 };
 } // namespace Consensus
 

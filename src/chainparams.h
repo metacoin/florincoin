@@ -76,6 +76,35 @@ public:
     const std::vector<unsigned char>& Base58Prefix(Base58Type type) const { return base58Prefixes[type]; }
     const std::vector<SeedSpec6>& FixedSeeds() const { return vFixedSeeds; }
     const CCheckpointData& Checkpoints() const { return checkpointData; }
+
+    int EnforceV2AfterHeight() const { return nEnforceV2AfterHeight; }
+    // ToDo: bitspill, metacoin. hacked in.
+    unsigned int nPowTargetTimespan_Version1;
+    unsigned int nInterval_Version1;
+    unsigned int nHeight_Version2;
+    unsigned int nInterval_Version2;
+    unsigned int nPowTargetTimespan_Version2;
+    unsigned int nHeight_Version3;
+    unsigned int nInterval_Version3;
+    unsigned int nPowTargetTimespan_Version3;
+    unsigned int nMaxAdjustDown_Version1;
+    unsigned int nMaxAdjustUp_Version1;
+    unsigned int nMaxAdjustDown_Version2;
+    unsigned int nMaxAdjustUp_Version2;
+    unsigned int nMaxAdjustDown_Version3;
+    unsigned int nMaxAdjustUp_Version3;
+    unsigned int nPowTargetTimespanAdjDown_Version1;
+    unsigned int nPowTargetTimespanAdjDown_Version2;
+    unsigned int nPowTargetTimespanAdjDown_Version3;
+    unsigned int nAveragingInterval_Version1;
+    unsigned int nAveragingInterval_Version2;
+    unsigned int nAveragingInterval_Version3;
+    unsigned int nAveragingTargetTimespan_Version1;
+    unsigned int nAveragingTargetTimespan_Version2;
+    unsigned int nAveragingTargetTimespan_Version3;
+
+
+
 protected:
     CChainParams() {}
 
@@ -94,6 +123,9 @@ protected:
     bool fMineBlocksOnDemand;
     bool fTestnetToBeDeprecatedFieldRPC;
     CCheckpointData checkpointData;
+
+    // Florincoin: Height to enforce v2 blocks
+    int nEnforceV2AfterHeight;
 };
 
 /**

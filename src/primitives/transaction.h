@@ -298,6 +298,12 @@ inline void SerializeTransaction(TxType& tx, Stream& s, Operation ser_action, in
         const_cast<CTxWitness*>(&tx.wit)->SetNull();
         /* Try to read the vin. In case the dummy is there, this will be read as an empty vector. */
         READWRITE(*const_cast<std::vector<CTxIn>*>(&tx.vin));
+
+        // TODO: metacoin - segwit version
+        if (nVersion > 1) {
+            /* Cast strTxComment to std::string for serialization */
+            READWRITE(*const_cast<std::string*>(&tx.strTxComment));
+        }
         if (tx.vin.size() == 0 && !(nVersion & SERIALIZE_TRANSACTION_NO_WITNESS)) {
             /* We read a dummy or an empty vin. */
             READWRITE(flags);
@@ -355,7 +361,12 @@ private:
 
 public:
     // Default transaction version.
-    static const int32_t CURRENT_VERSION=1;
+    static const unsigned int MAX_TX_COMMENT_LEN_V1 = 140; 
+    static const unsigned int MAX_TX_COMMENT_LEN_V2 = 528;
+    static const unsigned int TX_COMMENT_V2_HEIGHT = 340000;
+
+    static const int32_t LEGACY_VERSION_1=1;
+    static const int32_t CURRENT_VERSION=2;
 
     // Changing the default transaction version requires a two step process: first
     // adapting relay policy by bumping MAX_STANDARD_VERSION, and then later date
@@ -371,6 +382,7 @@ public:
     const int32_t nVersion;
     const std::vector<CTxIn> vin;
     const std::vector<CTxOut> vout;
+    const std::string strTxComment;
     CTxWitness wit; // Not const: can change without invalidating the txid cache
     const uint32_t nLockTime;
 
@@ -440,6 +452,7 @@ struct CMutableTransaction
     int32_t nVersion;
     std::vector<CTxIn> vin;
     std::vector<CTxOut> vout;
+    std::string strTxComment;
     CTxWitness wit;
     uint32_t nLockTime;
 
