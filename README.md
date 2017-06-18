@@ -1,5 +1,7 @@
-Florincoin Core
+Florincoin Core - Segwit
 =====================================
+
+# THIS IS AN EXPERIMENTAL PRE-RELEASE. USE WITH EXTREME CAUTION. FOR DEVELOPMENT PURPOSES ONLY.
 
 Florincoin - the first coin to feature transaction comments
 
