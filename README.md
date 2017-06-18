@@ -1,9 +1,22 @@
-Litecoin Core integration/staging tree
+Florincoin Core integration/staging tree
 =====================================
 
 [![Build Status](https://travis-ci.org/florincoin-project/florincoin.svg?branch=master)](https://travis-ci.org/florincoin-project/florincoin)
 
 https://florincoin.org
+
+
+Florincoin - the first coin to feature transaction comments
+
+ - Fast block generation: 40 second block targets
+ - subsidy halves in 800k blocks (~1 year)
+ - ~160 million total coins 
+ - 100 coins per block
+ - 90 blocks to retarget difficulty
+ - A comments field can be included in a transaction for use between coin sender and receiver.
+
+http://www.florincoin.org/
+
 
 What is Florincoin?
 ----------------
@@ -11,8 +24,8 @@ What is Florincoin?
 Florincoin is an experimental digital currency that enables instant payments to
 anyone, anywhere in the world. Florincoin uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Florincoin Core is the name of open source
-software which enables the use of this currency.
+out collectively by the network. It has a unique feature: transaction comments.
+Florincoin Core is the name of open source software enabling the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
 the Florincoin Core software, see [https://florincoin.org](https://florincoin.org).
