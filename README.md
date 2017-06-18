@@ -1,8 +1,5 @@
-Florincoin Core integration/staging tree
+Florincoin Core
 =====================================
-
-https://florincoin.org
-
 
 Florincoin - the first coin to feature transaction comments
 
