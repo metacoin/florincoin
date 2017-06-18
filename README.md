@@ -1,8 +1,6 @@
 Florincoin Core integration/staging tree
 =====================================
 
-[![Build Status](https://travis-ci.org/florincoin-project/florincoin.svg?branch=master)](https://travis-ci.org/florincoin-project/florincoin)
-
 https://florincoin.org
 
 
