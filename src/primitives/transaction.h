@@ -277,6 +277,7 @@ struct CMutableTransaction;
  * - std::vector<CTxIn> vin
  * - std::vector<CTxOut> vout
  * - uint32_t nLockTime
+ * - std::string strTxComment
  *
  * Extended transaction serialization format:
  * - int32_t nVersion
@@ -287,6 +288,7 @@ struct CMutableTransaction;
  * - if (flags & 1):
  *   - CTxWitness wit;
  * - uint32_t nLockTime
+ * - std::string strTxComment
  */
 template<typename Stream, typename Operation, typename TxType>
 inline void SerializeTransaction(TxType& tx, Stream& s, Operation ser_action, int nType, int nVersion) {
@@ -299,11 +301,6 @@ inline void SerializeTransaction(TxType& tx, Stream& s, Operation ser_action, in
         /* Try to read the vin. In case the dummy is there, this will be read as an empty vector. */
         READWRITE(*const_cast<std::vector<CTxIn>*>(&tx.vin));
 
-        // TODO: metacoin - segwit version
-        if (nVersion > 1) {
-            /* Cast strTxComment to std::string for serialization */
-            READWRITE(*const_cast<std::string*>(&tx.strTxComment));
-        }
         if (tx.vin.size() == 0 && !(nVersion & SERIALIZE_TRANSACTION_NO_WITNESS)) {
             /* We read a dummy or an empty vin. */
             READWRITE(flags);
@@ -348,6 +345,11 @@ inline void SerializeTransaction(TxType& tx, Stream& s, Operation ser_action, in
         }
     }
     READWRITE(*const_cast<uint32_t*>(&tx.nLockTime));
+
+    if (tx.nVersion > 1) {
+        /* Cast strTxComment to std::string for serialization */
+        READWRITE(*const_cast<std::string*>(&tx.strTxComment));
+    }
 }
 
 /** The basic transaction that is broadcasted on the network and contained in
@@ -361,7 +363,7 @@ private:
 
 public:
     // Default transaction version.
-    static const unsigned int MAX_TX_COMMENT_LEN_V1 = 140; 
+    static const unsigned int MAX_TX_COMMENT_LEN_V1 = 140;
     static const unsigned int MAX_TX_COMMENT_LEN_V2 = 528;
     static const unsigned int TX_COMMENT_V2_HEIGHT = 340000;
 
